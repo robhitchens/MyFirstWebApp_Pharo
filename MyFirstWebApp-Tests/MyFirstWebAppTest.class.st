@@ -22,13 +22,13 @@ Internal Representation and Key Implementation Points.
     Implementation Points
 "
 Class {
-	#name : #MyFirstWebAppTests,
+	#name : #MyFirstWebAppTest,
 	#superclass : #TestCase,
-	#category : #MyFirstWebApp
+	#category : #'MyFirstWebApp-Tests'
 }
 
 { #category : #accessing }
-MyFirstWebAppTests >> image [
+MyFirstWebAppTest >> image [
 	^ ZnClient new
 		beOneShot;
 		get: 'http://zn.stfx.eu/zn/Hot-Air-Balloon.gif';
@@ -36,7 +36,7 @@ MyFirstWebAppTests >> image [
 ]
 
 { #category : #tests }
-MyFirstWebAppTests >> testDefaultImage [
+MyFirstWebAppTest >> testDefaultImage [
 	"comment stating purpose of instance-side message"
 
 	"scope: class-variables  &  instance-variables"
@@ -58,7 +58,7 @@ MyFirstWebAppTests >> testDefaultImage [
 ]
 
 { #category : #tests }
-MyFirstWebAppTests >> testMainPage [
+MyFirstWebAppTest >> testMainPage [
 	self
 		withServerDo: [ :server | 
 			| client |
@@ -75,7 +75,7 @@ MyFirstWebAppTests >> testMainPage [
 ]
 
 { #category : #tests }
-MyFirstWebAppTests >> testUpload [
+MyFirstWebAppTest >> testUpload [
 	self
 		withServerDo: [ :server | 
 			| image client |
@@ -97,7 +97,7 @@ MyFirstWebAppTests >> testUpload [
 ]
 
 { #category : #helper }
-MyFirstWebAppTests >> withServerDo: block [
+MyFirstWebAppTest >> withServerDo: block [
 	| server |
 	server := ZnServer on: 1700 + 10 atRandom.
 	[ server start.
